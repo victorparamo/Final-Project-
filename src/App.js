@@ -1,45 +1,21 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import logo from './logo.svg';
-import FontAwesome from 'react-fontawesome';
+import Login from './components/Login';
+import { Route, Redirect, NavLink, Switch, } from 'react-router-dom';
 import './App.css';
-import { GoogleLogout, GoogleLogin } from 'react-google-login';
-import { GoogleClientID } from './keys/Google_Keys'; 
 
 class App extends Component {
-  responseGoogle(response) {
-    console.log(response);
-  }
-
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <GoogleLogin
-              clientId={GoogleClientID}
-              onSuccess={(e) => this.responseGoogle(e)}
-              onFailure={(e) => this.responseGoogle(e)}
-            >
-              <FontAwesome
-                name='google'
-                size='2x'
-                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-              />
-              <span>Login with google</span>
-            </GoogleLogin>
-            <GoogleLogout
-              buttonText="Logout"
-              onLogoutSuccess={(e) => this.responseGoogle(e)}
-            />
-          </header>
-        </div>
-      </Provider>
+      <div className="App">
+        <Switch>
+          <Route path="/" component={Login}  />
+          <Route path="/Favorites" component={Login}/>
+          <Redirect to={{
+            pathname: "/",
+            state: { from: 'NOT FOUND PAGE' },
+          }}/>
+        </Switch>
+      </div>
     );
   }
 }
