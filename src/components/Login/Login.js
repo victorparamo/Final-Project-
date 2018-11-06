@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import FontAwesome from 'react-fontawesome';
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
-import { GoogleClientID } from '../../keys/Google_Keys'; 
+import { GoogleClientID } from '../../keys/Google_Keys';
+import loginActions from '../../redux/actions/Login_Actions';
 
 
 class Login extends Component {
+    constructor(props){
+        super(props);
+    }
+
     responseGoogle(response) {
       console.log(response);
     }
@@ -34,4 +41,16 @@ class Login extends Component {
     }
 };
 
-export default Login;
+function mapStateToProps (state) {
+    // const { gifts, } = state;
+
+    // return { gifts, };
+};
+  
+function mapDispatchToProps (dispatch) {
+    const { loginAuthorized, loginFailed } = loginActions.creators;
+
+    return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
+};
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
