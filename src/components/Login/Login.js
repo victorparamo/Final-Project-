@@ -9,10 +9,6 @@ import loginActions from '../../redux/actions/Login_Actions';
 
 
 class Login extends Component {
-    constructor(props){
-        super(props);
-    }
-
     responseGoogle(response) {
       console.log(response);
     }
@@ -53,4 +49,4 @@ function mapDispatchToProps (dispatch) {
     return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
 };
   
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
