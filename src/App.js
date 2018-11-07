@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Login from './components/Login';
-import { Route, Redirect, NavLink, Switch, } from 'react-router-dom';
+import Login  from './components/Login';
+import WorkSpace from './components/WorkSpace';
+import PrivateRouteLogin from './containers/PrivateRoute';
+import { Route, Redirect, Switch, } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -8,12 +10,12 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route path="/" component={Login}  />
-          <Route path="/Favorites" component={Login}/>
-          <Redirect to={{
-            pathname: "/",
+          <PrivateRouteLogin path="/login" component={Login}  />
+          <Route path="/workSpace" component={WorkSpace}/>
+          {/* <Redirect to={{
+            pathname: "/login",
             state: { from: 'NOT FOUND PAGE' },
-          }}/>
+          }}/> */}
         </Switch>
       </div>
     );
