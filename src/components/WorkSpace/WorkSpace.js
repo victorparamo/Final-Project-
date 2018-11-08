@@ -4,11 +4,13 @@ import { bindActionCreators } from 'redux';
 import NavBar from '../NavBar';
 import { Route, Redirect, Switch, } from 'react-router-dom';
 
-const WorkSpace = ({ match }) => {
-        
+const WorkSpace = ({ match, ...props }) => {
+    let { pathname } = props.location;
+    pathname = pathname.replace("/workSpace/", "");
+
     return (
         <div>
-            <NavBar /> 
+            <NavBar item={pathname}/> 
             <Switch>
                 <Route path={`${match.path}/aboutUs`} component={()=>{return (<p>hola01</p>)}} />
                 <Route path={`${match.path}/mission`} component={()=>{return (<p>hola02</p>)}} />

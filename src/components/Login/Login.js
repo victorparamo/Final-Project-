@@ -7,7 +7,7 @@ import { GoogleLogin } from 'react-google-login';
 import { GoogleClientID } from '../../keys/Google_Keys';
 import loginActions from '../../redux/actions/Login_Actions';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button } from 'mdbreact';;
 
 const Login = (props) =>{
     const { loginAuthorized, loginFailed } = props;
@@ -27,7 +27,7 @@ const Login = (props) =>{
                 />
                 <a>Login with google</a>
             </GoogleLogin>
-            <Button className="white my-3" bsSize="large"><NavLink className="text-dark" to="/workSpace">Go to page without Login... </NavLink></Button>
+            <Button color="cyan" outline><NavLink className="text-white" to="/workSpace">Go to page without Login... </NavLink></Button>
          </div>
     );
 };

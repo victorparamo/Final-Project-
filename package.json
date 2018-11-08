@@ -8,7 +8,6 @@
     "font-awesome": "^4.7.0",
     "mdbreact": "^4.8.2",
     "react": "^16.6.0",
-    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.0",
     "react-fontawesome": "^1.6.1",
     "react-google-login": "^3.2.1",

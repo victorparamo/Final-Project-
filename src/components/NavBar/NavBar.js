@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
+import './NavBar.css'
+import { Navbar, NavbarBrand, NavbarNav, NavbarToggler,
+         NavItem, NavLink,
+         Collapse, 
+         Dropdown, DropdownToggle, DropdownMenu, DropdownItem 
+} from 'mdbreact';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -17,25 +22,33 @@ class NavBar extends React.Component {
             collapse: !this.state.collapse,
         });
     }
+
     render() {
+        const { isWideEnough,
+                collapse, 
+        } = this.state;
+
+        const { item, LoginStatus } = this.props;
+        
+        console.log("------>", LoginStatus);
         return (
             <Navbar color="red" dark expand="md" sticky="top">
                 <NavbarBrand href="/">
                     <strong>Navbar</strong>
                 </NavbarBrand>
-                { !this.state.isWideEnough && <NavbarToggler onClick = {() => this.onClick() } />}
-                <Collapse isOpen = { this.state.collapse } navbar>
+                { !isWideEnough && <NavbarToggler onClick = {() => this.onClick() } />}
+                <Collapse isOpen = { collapse } navbar>
                     <NavbarNav left>
-                        <NavItem active>
+                        <NavItem className={item === "aboutUs" ? "active" : ""}>
                             <NavLink to="aboutUs">About us</NavLink>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className={item === "mission" ? "active" : ""}>
                             <NavLink to="mission">Mission</NavLink>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className={item === "gallery" ? "active" : ""}>
                             <NavLink to="gallery">Gallery</NavLink>
                         </NavItem>
-                        <NavItem>
+                        <NavItem className={item === "shoppingCart" ? "active" : ""}>
                             <NavLink to="shoppingCart">Shopping Cart</NavLink>
                         </NavItem>
                         <NavItem>
@@ -52,9 +65,7 @@ class NavBar extends React.Component {
                     </NavbarNav>
                     <NavbarNav right>
                         <NavItem>
-                        <form className="form-inline md-form mt-0">
-                            <input className="form-control mr-sm-2 mb-0 text-white" type="text" placeholder="Search" aria-label="Search"/>
-                        </form>
+                         <button className="btn btn-circle"></button>
                         </NavItem>
                     </NavbarNav>
                 </Collapse>
@@ -63,11 +74,11 @@ class NavBar extends React.Component {
     }
 };
 
-// function mapStateToProps (state) {
-//     // const { gifts, } = state;
+function mapStateToProps (state) {
+    const { LoginStatus, } = state.login;
 
-//     // return { gifts, };
-// };
+    return { LoginStatus, };
+};
   
 // function mapDispatchToProps (dispatch) {
 //     const { loginAuthorized, loginFailed } = loginActions.creators;
@@ -75,4 +86,4 @@ class NavBar extends React.Component {
 //     return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
 // };
   
-export default connect(null, null)(NavBar);
+export default connect(mapStateToProps, null)(NavBar);
