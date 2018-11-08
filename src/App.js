@@ -12,10 +12,10 @@ class App extends Component {
         <Switch>
           <PrivateRouteLogin path="/login" component={Login}  />
           <Route path="/workSpace" component={WorkSpace}/>
-          {/* <Redirect to={{
+          <Redirect to={{
             pathname: "/login",
             state: { from: 'NOT FOUND PAGE' },
-          }}/> */}
+          }}/>
         </Switch>
       </div>
     );

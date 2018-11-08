@@ -6,10 +6,11 @@ import FontAwesome from 'react-fontawesome';
 import { GoogleLogin } from 'react-google-login';
 import { GoogleClientID } from '../../keys/Google_Keys';
 import loginActions from '../../redux/actions/Login_Actions';
-
+import { NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Login = (props) =>{
-    const { loginAuthorized, loginFailed, LoginStatus } = props;
+    const { loginAuthorized, loginFailed } = props;
 
     return (
          <div className="App-header">
@@ -22,9 +23,11 @@ const Login = (props) =>{
                 <FontAwesome
                     name='google'
                     size='2x'
+                    className="mr-3"
                 />
-                <span>Login with google</span>
+                <a>Login with google</a>
             </GoogleLogin>
+            <Button className="white my-3" bsSize="large"><NavLink className="text-dark" to="/workSpace">Go to page without Login... </NavLink></Button>
          </div>
     );
 };

@@ -1,18 +1,28 @@
-import React, { Component } from 'react'
-import logo from '../Login/logo.svg';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { GoogleLogout, GoogleLogin } from 'react-google-login';
+import NavBar from '../NavBar';
+import { Route, Redirect, Switch, } from 'react-router-dom';
 
+const WorkSpace = ({ match }) => {
+        
+    return (
+        <div>
+            <NavBar /> 
+            <Switch>
+                <Route path={`${match.path}/aboutUs`} component={()=>{return (<p>hola01</p>)}} />
+                <Route path={`${match.path}/mission`} component={()=>{return (<p>hola02</p>)}} />
+                <Route path={`${match.path}/gallery`} component={()=>{return (<p>hola03</p>)}}/>
+                <Route path={`${match.path}/shoppingCart`} component={()=>{return (<p>hola04</p>)}}/>
+                
+                <Redirect to={{
+                    pathname: `${match.path}/aboutUs`,
+                    state: { from: 'NOT FOUND PAGE' },
+                }}/>
+            </Switch>
+        </div>
+    )
 
-class Login extends Component {
-    render(){
-      return (
-         <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-         </div>
-        );
-    }
 };
 
 // function mapStateToProps (state) {
@@ -27,4 +37,4 @@ class Login extends Component {
 //     return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
 // };
   
-export default connect(null, null)(Login);
+export default connect(null, null)(WorkSpace);
