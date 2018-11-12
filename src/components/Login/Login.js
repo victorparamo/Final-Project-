@@ -17,7 +17,7 @@ const Login = (props) =>{
             <img src={logo} className="App-logo" alt="logo" />
             <GoogleLogin
                 clientId={GoogleClientID}
-                onSuccess={(e) => loginAuthorized(e)}
+                onSuccess={(e) => loginAuthorized(e.profileObj)}
                 onFailure={(e) => loginFailed(e)}
             >
                 <FontAwesome
@@ -27,7 +27,7 @@ const Login = (props) =>{
                 />
                 <a>Login with google</a>
             </GoogleLogin>
-            <Button color="cyan" outline><NavLink className="text-white" to="/workSpace">Go to page without Login... </NavLink></Button>
+            <Button className="my-4" color="cyan" outline><NavLink className="text-white" to="/workSpace">Go to page without Login... </NavLink></Button>
          </div>
     );
 };

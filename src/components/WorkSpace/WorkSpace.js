@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import NavBar from '../NavBar';
+import NavBar from '../../containers/NavBar';
 import { Route, Redirect, Switch, } from 'react-router-dom';
+import Gallery from '../../containers/Gallery';
+import './WorkSpace.css';
 
 const WorkSpace = ({ match, ...props }) => {
     let { pathname } = props.location;
     pathname = pathname.replace("/workSpace/", "");
 
     return (
-        <div>
+        <div className="WorkSpace">
             <NavBar item={pathname}/> 
             <Switch>
                 <Route path={`${match.path}/aboutUs`} component={()=>{return (<p>hola01</p>)}} />
                 <Route path={`${match.path}/mission`} component={()=>{return (<p>hola02</p>)}} />
-                <Route path={`${match.path}/gallery`} component={()=>{return (<p>hola03</p>)}}/>
+                <Route path={`${match.path}/gallery`} component={Gallery}/>
                 <Route path={`${match.path}/shoppingCart`} component={()=>{return (<p>hola04</p>)}}/>
                 
                 <Redirect to={{
@@ -26,17 +28,5 @@ const WorkSpace = ({ match, ...props }) => {
     )
 
 };
-
-// function mapStateToProps (state) {
-//     // const { gifts, } = state;
-
-//     // return { gifts, };
-// };
-  
-// function mapDispatchToProps (dispatch) {
-//     const { loginAuthorized, loginFailed } = loginActions.creators;
-
-//     return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
-// };
   
 export default connect(null, null)(WorkSpace);

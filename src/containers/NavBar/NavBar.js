@@ -5,8 +5,8 @@ import './NavBar.css'
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler,
          NavItem, NavLink,
          Collapse, 
-         Dropdown, DropdownToggle, DropdownMenu, DropdownItem 
 } from 'mdbreact';
+import NavBarButton from '../../components/NavBarButton';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -28,11 +28,15 @@ class NavBar extends React.Component {
                 collapse, 
         } = this.state;
 
-        const { item, LoginStatus } = this.props;
+        const { item, 
+                LoginStatus, 
+                image, 
+                email, 
+                name 
+        } = this.props;
         
-        console.log("------>", LoginStatus);
         return (
-            <Navbar color="red" dark expand="md" sticky="top">
+            <Navbar color="stylish-color" dark expand="md" sticky="top">
                 <NavbarBrand href="/">
                     <strong>Navbar</strong>
                 </NavbarBrand>
@@ -51,21 +55,15 @@ class NavBar extends React.Component {
                         <NavItem className={item === "shoppingCart" ? "active" : ""}>
                             <NavLink to="shoppingCart">Shopping Cart</NavLink>
                         </NavItem>
-                        <NavItem>
-                        <Dropdown>
-                            <DropdownToggle nav caret>Dropdown</DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem href="#">Action</DropdownItem>
-                                <DropdownItem href="#">Another Action</DropdownItem>
-                                <DropdownItem href="#">Something else here</DropdownItem>
-                                <DropdownItem href="#">Something else here</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                        </NavItem>
                     </NavbarNav>
                     <NavbarNav right>
                         <NavItem>
-                         <button className="btn btn-circle"></button>
+                            <NavBarButton 
+                                LoginStatus={LoginStatus}
+                                image={image}
+                                email={email}
+                                name={name}
+                                />
                         </NavItem>
                     </NavbarNav>
                 </Collapse>
@@ -75,9 +73,9 @@ class NavBar extends React.Component {
 };
 
 function mapStateToProps (state) {
-    const { LoginStatus, } = state.login;
+    const { LoginStatus, image, email, name } = state.login;
 
-    return { LoginStatus, };
+    return { LoginStatus, image, email, name };
 };
   
 // function mapDispatchToProps (dispatch) {
