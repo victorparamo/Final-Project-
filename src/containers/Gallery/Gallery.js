@@ -1,41 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './Gallery.css';
 import GalleryImage from '../../components/GalleryImage';
+import InventoryActions from '../../redux/actions/Inventory_Actions';
 
-class Gallery extends React.Component {
+class Gallery extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            images : [{name:"Image 1", image:"", id:"0001"},
-                      {name:"Image 2", image:"", id:"0002"},
-                      {name:"Image 3", image:"", id:"0003"},
-                      {name:"Image 4", image:"", id:"0004"},
-                      {name:"Image 5", image:"", id:"0005"},
-                      {name:"Image 6", image:"", id:"0006"},
-                      {name:"Image 7", image:"", id:"0007"},
-                      {name:"Image 10", image:"", id:"0009"},
-                      {name:"Image 11", image:"", id:"00010"}],
-        };
     }
 
-    renderImages(){
+    componentDidMount(){
+        this.props.fetchInventory();
+    }
+
+    renderImages(obj){
         return (
-            this.state.images.map((item, index)=>(
+            Object.values(obj).map((item, index)=>(
                 <GalleryImage 
                     key={index}
-                    name={item.name}
-                    image={item.image}
+                    item={item}
                 />
             ))
         )
     }
 
-    render() {   
+    render() {
+        const { dataInventory, stateInventory } = this.props.inventory;
+
         return (
             <div className="GalleryContainer">
-                {this.renderImages()}
+                {stateInventory === InventoryActions.types.INVENTORY_FETCHED ? this.renderImages(dataInventory) : ""}
             </div>
         )
     }
@@ -43,14 +38,19 @@ class Gallery extends React.Component {
 
 function mapStateToProps (state) {
     const { LoginStatus, image, email, name } = state.login;
+    const { inventory } = state;
 
-    return { LoginStatus, image, email, name };
+    return { LoginStatus, image, email, name, 
+             inventory,
+    };
 };
   
-// function mapDispatchToProps (dispatch) {
-//     const { loginAuthorized, loginFailed } = loginActions.creators;
+function mapDispatchToProps (dispatch) {
+    const { fetchInventory } = InventoryActions.creators;
 
-//     return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
-// };
+    return bindActionCreators({ 
+        fetchInventory, 
+    }, dispatch);
+};
   
-export default connect(mapStateToProps, null)(Gallery);
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

@@ -1,9 +1,10 @@
-import axios from 'axios';
-import { all, call, takeEvery, put } from 'redux-saga/effects'; 
+import { all, takeEvery } from 'redux-saga/effects'; 
+import InventoryActions from '../actions/Inventory_Actions';
+import getInventory from './Inventory_Saga';
 
 function* rootSaga () {
     yield all([
-      //watchGiftRequested(),
+      takeEvery(InventoryActions.types.FETCH_INVENTORY, getInventory),
     ]);
   }
   

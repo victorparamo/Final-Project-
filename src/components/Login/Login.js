@@ -7,10 +7,10 @@ import { GoogleLogin } from 'react-google-login';
 import { GoogleClientID } from '../../keys/Google_Keys';
 import loginActions from '../../redux/actions/Login_Actions';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'mdbreact';;
+import { Button } from 'mdbreact';
 
 const Login = (props) =>{
-    const { loginAuthorized, loginFailed } = props;
+    const { loginAuthorized, loginFailed, fetchInventory } = props;
 
     return (
          <div className="App-header">
@@ -36,8 +36,7 @@ function mapDispatchToProps (dispatch) {
     const { loginAuthorized, loginFailed } = loginActions.creators;
 
     return bindActionCreators({ 
-        loginAuthorized,
-        loginFailed,
+        loginAuthorized, loginFailed,
     }, dispatch);
 };
   

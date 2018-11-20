@@ -29,10 +29,7 @@ class NavBar extends React.Component {
         } = this.state;
 
         const { item, 
-                LoginStatus, 
-                image, 
-                email, 
-                name 
+                LoginStatus, image, email, name,
         } = this.props;
         
         return (
@@ -77,11 +74,5 @@ function mapStateToProps (state) {
 
     return { LoginStatus, image, email, name };
 };
-  
-// function mapDispatchToProps (dispatch) {
-//     const { loginAuthorized, loginFailed } = loginActions.creators;
-
-//     return bindActionCreators({ loginAuthorized, loginFailed, }, dispatch);
-// };
   
 export default connect(mapStateToProps, null)(NavBar);
