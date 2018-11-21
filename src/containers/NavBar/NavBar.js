@@ -7,6 +7,7 @@ import { Navbar, NavbarBrand, NavbarNav, NavbarToggler,
          Collapse, 
 } from 'mdbreact';
 import NavBarButton from '../../components/NavBarButton';
+import logo from '../../images/logo1.png';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -34,8 +35,11 @@ class NavBar extends React.Component {
         
         return (
             <Navbar color="stylish-color" dark expand="md" sticky="top">
-                <NavbarBrand href="/">
-                    <strong>Navbar</strong>
+                <NavbarBrand>
+                    <div className="NavBarHome" href="/"> 
+                        <img src={logo} className="NavBar-Logo" alt="logo" /> 
+                        <p className="NavBarTitle">ART GALLERY STORE</p> 
+                    </div>
                 </NavbarBrand>
                 { !isWideEnough && <NavbarToggler onClick = {() => this.onClick() } />}
                 <Collapse isOpen = { collapse } navbar>
