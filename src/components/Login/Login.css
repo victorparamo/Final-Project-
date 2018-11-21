@@ -76,7 +76,7 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: black;
-    background-color: white;/*///#282c34;*/
+    background-color: #bdbdbd;/*///#282c34;*/
     position: relative;
 }
 .Login-Image{

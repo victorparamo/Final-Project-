@@ -26,7 +26,6 @@ class GalleryImage extends Component{
                 item,
         } = this.props;
 
-        console.log("-----Item------>", item);
         return (
             <div className="cardComponent">   
                 <Card>

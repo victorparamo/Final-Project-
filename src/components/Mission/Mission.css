@@ -1,0 +1,37 @@
+.MissionContainer{
+    background-color: #e0e0e0;
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.Mission_Left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.Mission_Right{
+    position: relative;
+    width: 50%;
+    height: auto;
+}
+.normal{
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Trebuchet MS';
+    color: black; 
+    padding: 10%;
+}
+.MissionTitle {
+    text-align: center;
+    font-family: slog;
+    font-size: 30px;
+    color: rgb(190, 9, 115);
+}

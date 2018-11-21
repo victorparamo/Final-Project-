@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import NavBar from '../../containers/NavBar';
 import { Route, Redirect, Switch, } from 'react-router-dom';
 import Gallery from '../../containers/Gallery';
+import About from '../../components/AboutUs';
+import Mission from '../../components/Mission';
 import './WorkSpace.css';
 
 const WorkSpace = ({ match, ...props }) => {
@@ -14,8 +16,8 @@ const WorkSpace = ({ match, ...props }) => {
         <div className="WorkSpace">
             <NavBar item={pathname}/> 
             <Switch>
-                <Route path={`${match.path}/aboutUs`} component={()=>{return (<p>hola01</p>)}} />
-                <Route path={`${match.path}/mission`} component={()=>{return (<p>hola02</p>)}} />
+                <Route path={`${match.path}/aboutUs`} component={About} />
+                <Route path={`${match.path}/mission`} component={Mission} />
                 <Route path={`${match.path}/gallery`} component={Gallery}/>
                 <Route path={`${match.path}/shoppingCart`} component={()=>{return (<p>hola04</p>)}}/>
                 

@@ -1,0 +1,67 @@
+.aboutUsContainer{
+    width: 100%;
+    height: auto;
+    position: relative;
+    background-color: #e0e0e0;
+}
+.titu{
+    text-align: center;
+    font-family: slog;
+    font-size: 30px;
+    color: rgb(68, 94, 241);
+}
+.contenido{
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    font-family: 'Trebuchet MS';
+    color: black; 
+}
+.equipo{
+    margin-top: 3%;
+    text-align: center;
+    font-family: slog;
+    font-size: 30px;
+    color: rgb(68, 94, 241);
+}
+.CardAboutUs{
+    max-width: 18rem;
+    height: 320px;
+    position: relative;
+    margin-top: 2%;
+}
+.ImageCard{
+    position: absolute;
+    top: 23% !important;
+    width: 150px;
+    left: 22%;
+}
+.frontOffice{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.frontoffice{
+    text-align: center;
+    font-family: slog;
+    font-size: 20px;
+    color: rgb(68, 94, 241);
+}
+.backoffice{
+    text-align: center;
+    font-family: slog;
+    font-size: 20px;
+    color: rgb(68, 94, 241);
+    margin-top: 2%;
+}
+.BackOffice{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
