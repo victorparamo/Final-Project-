@@ -1,0 +1,88 @@
+.App-logo {
+    height: 20%;
+    width: auto;
+    position: absolute;
+    top:2%;
+}
+.loginName {
+    position: absolute;
+    top:25%;
+}
+.App-header {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: gray;/*///#282c34;*/
+}
+.loginFooter {
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+.loginFooter2 {
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    bottom: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+.slogan{
+    font-family: slog;
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    top:40%;
+    /*color: rgb(223, 50, 50); */
+ }
+ .googleButtonTitle{
+    position: relative;
+    top: -3px;
+    left: 6px;
+    font-size: 22px;
+ }
+ .GoogleIcon{
+    position: relative;
+    left: 5px;
+ }
+ @font-face{
+    src:url(../../fonts/Black\ Freeday.ttf);
+    font-family: slog;
+}
+
+.pageButton{
+    bottom: -50px;
+}
+.Login_Left{
+    height: 100%;
+    width: 50%;
+    background-color: black;/*///#282c34;*/
+    position: relative;
+}
+.Login_Right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: black;
+    background-color: white;/*///#282c34;*/
+    position: relative;
+}
+.Login-Image{
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    position: absolute;
+}

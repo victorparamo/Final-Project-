@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
+import { Button, Card, CardBody, CardImage, CardTitle, CardText,
+         Modal, ModalBody, ModalHeader, ModalFooter
+} from 'mdbreact';
 import CartActions from '../../redux/actions/Cart_Actions';
 
-const GalleryImage = (props) =>{
+class GalleryImage extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            modal: false
+        };
+    }
 
-    const { addToCart,
-            removeFromCart,
-            item,
-    } = props;
+    toggle() {
+        this.setState({
+          "modal": !this.state.modal
+        });
+    }
 
-    console.log("-----Item------>", item);
+    render(){
+        const { addToCart,
+                removeFromCart,
+                item,
+        } = this.props;
 
-    return (
+        console.log("-----Item------>", item);
+        return (
             <div className="cardComponent">   
                 <Card>
                     <CardImage
@@ -23,11 +37,22 @@ const GalleryImage = (props) =>{
                     />
                     <CardBody>
                         <CardTitle>{item.name}</CardTitle>
-                        <Button className={item.amount > 0 ? "":"disabled"} href="#">Button</Button>
+                        <Button className={item.amount > 0 ? "":"disabled"} onClick={() => this.toggle()}>Button</Button>
                     </CardBody>
                 </Card>
+                <Modal isOpen={this.state.modal} toggle={() => this.toggle()} centered>
+                    <ModalHeader toggle={() => this.toggle()}>{item.name}</ModalHeader>
+                    <ModalBody>
+                        <img src={item.image} className="img-fluid" alt="Responsive image" /> 
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={() => this.toggle()}>Close</Button>
+                        <Button color="primary">Save changes</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
-    );
+        )
+    }
 };
 
 function mapDispatchToProps (dispatch) {
