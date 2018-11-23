@@ -6,6 +6,8 @@ import { Button, Card, CardBody, CardImage, CardTitle, CardText,
          Col, Row
 } from 'mdbreact';
 import CartActions from '../../redux/actions/Cart_Actions';
+import InventoryActions from '../../redux/actions/Inventory_Actions';
+
 import './GalleryImages.css';
 
 class GalleryImage extends Component{
@@ -22,13 +24,16 @@ class GalleryImage extends Component{
         });
     }
 
+    removeFromInventory(key, item){
+        this.props.removeFromInventory({key,item});
+        this.toggle();
+    }
+
     render(){
         const { addToCart,
-                removeFromCart,
-                item,
+                item, keyFirebase,
         } = this.props;
 
-        console.log("---->", item);
         return (
             <div className="cardComponent">   
                 <Card>
@@ -60,7 +65,7 @@ class GalleryImage extends Component{
                         </Row>
                     </ModalBody>
                     <ModalFooter className="mt-3">
-                        <Button color="secondary" className="mt-2" onClick={() => this.toggle()}>Add to Cart</Button>
+                        <Button color="secondary" className="mt-2" onClick={() => this.removeFromInventory(keyFirebase, item)}>Add to Cart</Button>
                     </ModalFooter>
                 </Modal>
             </div>
@@ -70,10 +75,11 @@ class GalleryImage extends Component{
 
 function mapDispatchToProps (dispatch) {
     const { addToCart, removeFromCart } = CartActions.creators;
+    const { removeFromInventory } = InventoryActions.creators;
 
     return bindActionCreators({ addToCart, 
-        removeFromCart  
-    }, dispatch);
+                                removeFromInventory, 
+                            }, dispatch);
 };
   
 export default connect(null, mapDispatchToProps)(GalleryImage);

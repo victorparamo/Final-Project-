@@ -15,14 +15,26 @@ class Gallery extends Component {
     }
 
     renderImages(obj){
-        return (
-            Object.values(obj).map((item, index)=>(
-                <GalleryImage 
-                    key={index}
-                    item={item}
-                />
-            ))
-        )
+            let index, data;
+            let infoImage=[], images = [];
+            let object = {};
+
+            for(let key in obj){
+                index=key;
+                data=obj[key];
+                object={key:index, data}
+                images.push(object);
+            }
+
+            return (
+                images.map((item, index)=>(
+                        <GalleryImage 
+                            key={index}
+                            item={item.data}
+                            keyFirebase={item.key}
+                        /> 
+                ))
+            )
     }
 
     render() {

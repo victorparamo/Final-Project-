@@ -6,6 +6,7 @@ import { Route, Redirect, Switch, } from 'react-router-dom';
 import Gallery from '../../containers/Gallery';
 import About from '../../components/AboutUs';
 import Mission from '../../components/Mission';
+import Cart from '../../containers/Cart';
 import './WorkSpace.css';
 
 const WorkSpace = ({ match, ...props }) => {
@@ -19,7 +20,7 @@ const WorkSpace = ({ match, ...props }) => {
                 <Route path={`${match.path}/aboutUs`} component={About} />
                 <Route path={`${match.path}/mission`} component={Mission} />
                 <Route path={`${match.path}/gallery`} component={Gallery}/>
-                <Route path={`${match.path}/shoppingCart`} component={()=>{return (<p>hola04</p>)}}/>
+                <Route path={`${match.path}/shoppingCart`} component={Cart}/>
                 
                 <Redirect to={{
                     pathname: `${match.path}/aboutUs`,
