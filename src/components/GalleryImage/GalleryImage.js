@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button, Card, CardBody, CardImage, CardTitle, CardText,
-         Modal, ModalBody, ModalHeader, ModalFooter
+         Modal, ModalBody, ModalHeader, ModalFooter,
+         Col, Row
 } from 'mdbreact';
 import CartActions from '../../redux/actions/Cart_Actions';
+import './GalleryImages.css';
 
 class GalleryImage extends Component{
     constructor(props){
@@ -26,6 +28,7 @@ class GalleryImage extends Component{
                 item,
         } = this.props;
 
+        console.log("---->", item);
         return (
             <div className="cardComponent">   
                 <Card>
@@ -36,17 +39,28 @@ class GalleryImage extends Component{
                     />
                     <CardBody>
                         <CardTitle>{item.name}</CardTitle>
-                        <Button className={item.amount > 0 ? "":"disabled"} onClick={() => this.toggle()}>Button</Button>
+                        <Button className={item.amount > 0 ? "":"disabled"} onClick={() => this.toggle()}>More Info...</Button>
                     </CardBody>
                 </Card>
-                <Modal isOpen={this.state.modal} toggle={() => this.toggle()} centered>
+                <Modal isOpen={this.state.modal} toggle={() => this.toggle()} centered size="lg">
                     <ModalHeader toggle={() => this.toggle()}>{item.name}</ModalHeader>
                     <ModalBody>
-                        <img src={item.image} className="img-fluid" alt="Responsive image" /> 
+                        <Row>
+                            <Col xs="7">
+                                <img src={item.image} className="img-fluid" alt="Responsive image" />
+                            </Col>
+                            <Col xs="5" className="mx-auto">
+                                <div className="InfoModal">
+                                    <p><strong>Author:   </strong>{item.author}</p>
+                                    <p><strong>Price:   </strong>{item.cost}</p>
+                                    <p><strong>Period:   </strong>{item.period}</p>
+                                    <p><strong>Amount:   </strong>{item.amount}</p>
+                                </div>
+                            </Col>
+                        </Row>
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={() => this.toggle()}>Close</Button>
-                        <Button color="primary">Save changes</Button>
+                    <ModalFooter className="mt-3">
+                        <Button color="secondary" className="mt-2" onClick={() => this.toggle()}>Add to Cart</Button>
                     </ModalFooter>
                 </Modal>
             </div>

@@ -15,15 +15,11 @@ const Login = (props) =>{
     const { loginAuthorized, loginFailed } = props;
 
     return (
-         <div className="App-header">
-            <div className="Login_Left">   
-                <img src={loginImage} className="Login-Image" alt="logo" />
-            </div>
             <div className="Login_Right">   
                 <img src={logo} className="App-logo" alt="logo" />
                 <p className="loginName">ART GALLERY STORE</p>
                 <div className="slogan">
-                    <p style={{color:"#00C851"}}>Here art selects you </p>
+                    <p style={{color:"#0277bd"}}>Here art selects you </p>
                 </div>
                 <div className="loginFooter">
                     <GoogleLogin    
@@ -40,10 +36,9 @@ const Login = (props) =>{
                     </GoogleLogin>
                 </div>
                 <div className="loginFooter2">
-                    <Button className="pageButton mt-2 mr-0" color="success"><NavLink className="text-white" to="/workSpace">Go to page without Login... </NavLink></Button>
+                    <Button className="pageButton mt-2 mr-0" color="blue darken-2"><NavLink className="text-white" to="/workSpace">Go to page without Login... </NavLink></Button>
                 </div>
             </div>
-        </div>
     );
 };
   

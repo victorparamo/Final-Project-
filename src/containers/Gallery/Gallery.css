@@ -1,14 +1,27 @@
 .GalleryContainer{
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  width: 100%;
+  height: auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  position: relative;
 }
 .cardComponent{
     width: 25rem;
     height: auto;
     margin: 5px 0px 5px 10px;
+}
+.sloganGallery{
+  font-family: slog;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(241, 124, 46); 
+  width: 100%;
+}
+.picsContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
 }

@@ -30,7 +30,10 @@ class Gallery extends Component {
 
         return (
             <div className="GalleryContainer">
-                {stateInventory === InventoryActions.types.INVENTORY_FETCHED ? this.renderImages(dataInventory) : ""}
+                <div className="sloganGallery">Gallery</div>
+                <div className="picsContainer">
+                    {stateInventory === InventoryActions.types.INVENTORY_FETCHED ? this.renderImages(dataInventory) : ""}
+                </div>
             </div>
         )
     }
