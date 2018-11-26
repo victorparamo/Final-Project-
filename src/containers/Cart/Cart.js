@@ -3,39 +3,54 @@ import { Table, TableBody, TableHead  } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const Cart = (props) => {
+
+
+const Cart = (props) => { 
+
+  let total = 0;
 
   const { cart } = props;
 
-  console.log("---Cart---->", cart);
+  const getTable = (cart) => {
+        let array = [];
+        for (let item in cart){
+          const obj = {image:cart[item].item.image,name:cart[item].item.name,quantity:cart[item].quantity, cost: cart[item].item.cost};
+          array.push(obj);
+          total += obj.quantity*obj.cost;
+        }
+
+        return (array.map((item,index)=>(
+          <tr key={index}>
+            <td>{index+1}</td>
+            <td>
+              <div>
+                <img src={item.image} width="60px"/>
+                <span>{item.name}</span>
+              </div>  
+            </td>
+            <td>{item.quantity}</td>
+            <td>{item.cost * item.quantity}</td>
+          </tr>
+        )))
+  }
 
   return (
-    <Table borderless hover striped>
-      <TableHead>
-        <tr>
-          <th>#</th>
-          <th>First</th>
-          <th>Handle</th>
-        </tr>
-      </TableHead>
-      <TableBody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Larry</td>
-          <td>@twitter</td>
-        </tr>
-      </TableBody>
-    </Table>
+    <div>
+      <Table borderless hover striped>
+        <TableHead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </TableHead>
+        <TableBody>
+          {getTable(cart)}
+        </TableBody>
+      </Table>
+      <h2>{total}</h2>
+    </div>
   );
 }
 function mapStateToProps (state) {
